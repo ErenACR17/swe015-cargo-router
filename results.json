@@ -1,0 +1,49 @@
+{
+  "hardware": "Windows | CPU: Intel64 Family 6 Model 186 Stepping 2, GenuineIntel | torch threads: 14 | torch 2.15.0+cpu | inference on CPU",
+  "n_train": 612,
+  "n_val": 108,
+  "n_test": 180,
+  "latency_runs": 100,
+  "models": [
+    {
+      "model": "1. TF-IDF + Logistic Regression",
+      "accuracy": 47.22,
+      "oos_recall": 50.0,
+      "f1": 41.63,
+      "size_mb": 0.02,
+      "latency_ms": 0.56
+    },
+    {
+      "model": "2. Word2Vec + SGD Feedforward NN",
+      "accuracy": 39.44,
+      "oos_recall": 50.0,
+      "f1": 40.1,
+      "size_mb": 0.03,
+      "latency_ms": 0.1
+    },
+    {
+      "model": "3. Fine-Tuned BERT (Teacher FP32)",
+      "accuracy": 90.56,
+      "oos_recall": 100.0,
+      "f1": 90.06,
+      "size_mb": 418.36,
+      "latency_ms": 21.98
+    },
+    {
+      "model": "4a. Distilled DistilBERT (FP32, before quantization) [extra]",
+      "accuracy": 91.67,
+      "oos_recall": 100.0,
+      "f1": 91.11,
+      "size_mb": 255.44,
+      "latency_ms": 11.02
+    },
+    {
+      "model": "4. Distilled + Quantized BERT (INT8)",
+      "accuracy": 85.0,
+      "oos_recall": 100.0,
+      "f1": 84.17,
+      "size_mb": 132.3,
+      "latency_ms": 13.92
+    }
+  ]
+}

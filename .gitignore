@@ -1,0 +1,10 @@
+models/
+*.pt
+*.pkl
+*.model
+models_trained.zip
+__pycache__/
+.venv/
+venv/
+.vs/
+models.zip
