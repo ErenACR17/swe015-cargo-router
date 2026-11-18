@@ -1,10 +1,8 @@
 """
 Synthetic dataset for the Cargo Support Ticket Router (self-generated, template based).
 
-IMPORTANT (leakage fix): the held-out TEST set is built ONLY from templates that never
-appear in train/validation. Before, all 6 templates of every intent were shared between
-train and test (and the 6 out-of-scope sentences were identical), so 100% scores were
-meaningless. Now test messages have unseen sentence structures.
+The held-out TEST set is built ONLY from templates that never appear in train/validation,
+so test messages have sentence structures the models have not seen during training.
 """
 
 import random

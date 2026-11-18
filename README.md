@@ -2,7 +2,7 @@
 
 **Student:** Eren Acar (`2309111059`)
 **Course:** SWE015 – Introduction to Large Language Models
-**Use case:** Customer Support Ticket Router 
+**Use case:** Use Case 2 – Customer Support Ticket Router (cargo domain, English)
 
 ## Overview
 A free-text customer message is normalized, tracking codes are extracted, spelling is corrected, and the intent is predicted with a confidence score. Low-confidence or `out_of_scope` messages go to a **Human Agent**; greetings get a rule-based (ELIZA-style) reply. Four models are shown side by side and the ticket is routed by the **quantized INT8 Transformer** (R5).
@@ -26,8 +26,8 @@ pip install -r requirements.txt
 ```
 **Trained models are not stored in this repo (too large).** Get them in one of two ways:
 
-1. Download `models/` from: **<https://drive.google.com/file/d/1Vb5w7klxcQ-iSMebO-V6BqELudiIuoRr/view?usp=sharing>** and unzip it next to `app.py`, or
-2. Train them yourself (≈ 5 min on a Colab T4 via `SWE015_Colab_Training.ipynb`, slower on CPU):
+1. Download `models/` from: **<https://drive.google.com/file/d/1Vb5w7klxcQ-iSMebO-V6BqELudiIuoRr/view?usp=sharing>** and unzip it next to `app.py` so that the folder `models/` sits beside `app.py`, or
+2. Train them yourself (on Google Colab via `SWE015_Colab_Training.ipynb`, or locally; BERT training is slow on CPU):
    ```bash
    python train_models.py      # creates models/ and results.json
    ```
@@ -40,7 +40,7 @@ Gradio opens at `http://127.0.0.1:7860`.
 
 ## Results (R4)
 Produced by `python train_models.py` → `results.json` (same held-out test set for all models, latency averaged over 100 runs on CPU, hardware string stored in `results.json`).
-Paste your own measured table here after your final run.
+
 
 | Model | Accuracy (%) | OOS recall (%) | Macro-F1 (%) | Size (MB) | Latency (ms) |
 |---|---|---|---|---|---|
@@ -52,3 +52,11 @@ Paste your own measured table here after your final run.
 
 Test set: 180 messages (unseen templates), same for all models. Latency: mean of 100 runs on one sample, CPU.
 Hardware: Windows | Intel64 Family 6 Model 186 | 14 torch threads | torch 2.15.0+cpu | inference on CPU
+
+## Sources
+- Data: self-generated template-based dataset (`dataset.py`); no external dataset.
+- Pretrained models: `bert-base-uncased` and `distilbert-base-uncased` from the Hugging Face Hub (Devlin et al., 2019; Sanh et al., 2019).
+- Libraries: PyTorch, Hugging Face Transformers, scikit-learn, gensim, Gradio.
+
+## AI usage
+Claude (Anthropic) was used for debugging, code review and drafting the slides/README. All training and evaluation runs, and every reported number, are from my own runs.
